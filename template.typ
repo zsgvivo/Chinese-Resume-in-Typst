@@ -98,6 +98,29 @@
   body
 }
 
+// 带时间线的侧边栏
+#let timesidebar(sidestart,sideend, content, withLine: true, sideWidth: 12%) = layout(size => {
+  let sideSize = measure(width: size.width,height: size.height,sidestart)
+  let contentSize = measure(width: size.width,height: size.height,content)
+  let height = calc.max(sideSize.height, contentSize.height) + 0.5em
+  grid(
+    columns: (sideWidth, 0%, 1fr),
+    gutter: (0.75em),
+    {
+      set align(right)
+      v(0.25em)
+      align(top, sidestart)
+      align(bottom, sideend)
+      v(0.25em)
+    },
+    if (withLine) {line(end: (0em, height), stroke: 0.05em)},
+    {
+      v(0.25em)
+      content
+      v(0.25em)
+    },
+  )
+})
 
 // 带竖线的侧边栏
 #let sidebar(side, content, withLine: true, sideWidth: 12%) = layout(size => {
@@ -168,12 +191,13 @@
 #let item(
   title,
   desc,
-  endnote
+  endnote,
+  firstcolumnwidth: 40%
 ) = {
   v(0.25em)
   grid(
-    columns: (30%, 1fr, auto),
-    gutter: (0em),
-    title, desc, endnote
+    columns: (firstcolumnwidth, 1fr, auto),
+    gutter: (2em),
+    title, desc, align(right, endnote)
   )
 }

@@ -1,7 +1,6 @@
 #import "template.typ": *
 
 // 设置图标, 来源: https://fontawesome.com/icons/
-// https://iconpark.oceanengine.com/official
 // 如果要修改图标颜色, 请手动修改 svg 文件中的 fill="rgb(38, 38, 125)" 属性
 // 例如可以使用 VS Code 的全局文本替换功能
 #let faAward = icon("icons/fa-award.svg")
@@ -17,22 +16,6 @@
 #let faWork = icon("icons/fa-work.svg")
 #let faLocation = icon("icons/fa-location.svg")
 #let faLanguage = icon("icons/fa-language.svg")
-#let faPaper = icon("icons/fa-paper.svg")
-#let LATEX = {
-  [L];box(move(
-    dx: -4.2pt, dy: -1.2pt,
-    box(scale(65%)[A])
-  ));box(move(
-  dx: -5.7pt, dy: 0pt,
-  [T]
-));box(move(
-  dx: -7.0pt, dy: 2.7pt,
-  box(scale(100%)[E])
-));box(move(
-  dx: -8.0pt, dy: 0pt,
-  [X]
-));h(-8.0pt)
-}
 
 // 主题颜色
 #let themeColor = rgb(38, 38, 125)
@@ -40,14 +23,14 @@
 // 设置简历选项与头部
 #show: resume.with(
   // 字体基准大小
-  size: 9.5pt,
+  size: 10pt,
   // 标题颜色
   themeColor: themeColor,
   // 控制纸张的边距
-  top: 1.2cm,
-  bottom: 1.5cm,
-  left: 1.5cm,
-  right: 1.5cm,
+  top: 1.5cm,
+  bottom: 2cm,
+  left: 2cm,
+  right: 2cm,
 
   // 如果需要姓名及联系信息居中，请删除下面关于头像的三行参数，并取消headerCenter的注释
   //headerCenter : true,
@@ -58,14 +41,14 @@
   // gutterWidth: 2em,
 )[
 
-= 丁阳
+= Ding Yang
 
 #info(
   color: themeColor,
   (
     // 其实 icon 也可以直接填字符串, 如 "fa-phone.svg" 
     icon: faPhone,
-    content: "(+86) 188-3570-9301"
+    content: "(+86) 188-3570-9301",
   ),
   (
     icon: faEnvelope,
@@ -74,11 +57,11 @@
   ),
   (
     icon: faBuildingColumns,
-    content: "清华大学",
+    content: "Tsinghua University",
   ),
   (
     icon: faGraduationCap,
-    content: "人工智能",
+    content: "Artifical Intelligence",
   ),
   // (
   //   icon: faGithub,
@@ -87,7 +70,7 @@
   // ),
   (
     icon: faLocation,
-    content: "广东 · 深圳",
+    content: "Guangdong  · Shenzhen",
   )
 )
 ][
@@ -97,19 +80,19 @@
 ]
 
 
-== #faGraduationCap 教育背景
+== #faGraduationCap EDUCATION
 
 #timesidebar(withLine: true, sideWidth: 12%)[
   #[
     #set text(0.6em)
-    （预计）
+    (Expected)
   ] 
   2027.07 ][
   2024.09
 ][
-  *清华大学* · SIGS · 人工智能硕士
+  *Tsinghua University* · SIGS · Master of Artificial Intelligence
   
-  - #text(0.95em, "IIGroup, 自然语言处理方向")
+  IIGroup, Natural Language Processing
 ]
 
 #timesidebar(withLine: true, sideWidth: 12%)[
@@ -117,12 +100,11 @@
 ][
   2020.09
 ][
-  *清华大学* · 自动化系 · 自动化专业 · 工学学士
+  *Tsinghua University * · Department of Automation · Bachelor of Engineering in Automation
   
   - GPA: 3.72 / 4.0 // , ranking \~ 40%
 
-  - #text(0.95em,
-    "部分核心课程：计算机语言与程序设计(4.0/4.0)，数据结构与算法(4.0/4.0)，操作系统(4.0/4.0)， 计算机网络与应用(4.0/4.0)， 人工智能基础(4.0/4.0)， 数字视频基础与应用(4.0/4.0)")
+  - #text(0.9em,  "Core Courses: Computer Language and Programming (4.0/4.0), Data Structures and Algorithms (4.0/4.0), Operating Systems (4.0/4.0), Computer Networks and Applications (4.0/4.0), Fundamentals of Artificial Intelligence (4.0/4.0), Basics and Applications of Digital Video (4.0/4.0)")
 ]
 
 
@@ -145,54 +127,7 @@
 
 
 
-
-
-== #faWork 实习经历
-
-// 在这里添加你的实习经历
-#item(
-  [ 美团, NLP 中心 \ #text(0.9em ,"LLM算法策略实习")], //北京三快网络科技有限公司
-  [ ],
-  date[北京 \ 2023 年 09 月 – 2023 年 12 月  ]
-)
-
-- 基于语义分析和聚类算法，对中文预训练数据集进行了长尾知识分布分析
-- 设计并实施基于知识重分布的模型与数据对齐流程，提升了基于 Llama 2 的预训练大模型在 MMLU 等知识评测任务上的表现 // 知识增强？
-
-#item(
-  [ 字节跳动, Tiktok \ #text(0.9em ," 多模态大模型科研实习")], //北京三快网络科技有限公司
-  [ ],
-  date[上海 \ 2025 年 01 月 – 现在  ]
-)
-
-- 对多模态大语言模型视频理解以及强化学习算法方向开展科研探索
-
-== #faPaper 论文发表
-
-#grid(
-  columns: (1fr, auto),
-  gutter: 1em,
-  link("https://arxiv.org/abs/2506.14907")[[NIPS'25] PeRL: Permutation-Enhanced Reinforcement Learning for Interleaved Vision-Language Reasoning],
-  align(right)[共同一作]
-)
-
-- 我们提出了 PeRL, 一种新的针对交错多图任务的强化学习训练框架, 消除多模态大模型多图推理时的位置偏差
-// #item(
-//   [],
-//   [],
-//   []
-// )
-// #publication(
-//   [基于深度学习的自然语言处理新方法],
-//   [张三, 李四, 王五],
-//   [计算机学报],
-//   [2023-06],
-//   [https://example.com/paper1],
-//   [提出了一种新的注意力机制，在多个基准测试中达到最先进性能]
-// )
-
-
-== #faCode 项目经历
+== #faCode PROJECTS
 
 #item(
   link(
@@ -200,43 +135,41 @@
     [*LLM Merging Competition*]
     ),
     [NIPS 2024 Challenge],
-    date[ 2024 年 09 月 – 2024 年 11 月 ]
+    date[ Sept. 2024 – Nov. 2024],firstcolumnwidth: 40%
     )
 
-// - 使用 DARE-TIES 融合策略在多种基座模型上实现LLM的高效融合，提升多任务泛化性能
-- 调研并测试了前沿模型融合策略，在多种基座模型上实现LLM的高效融合，提升多任务泛化性能
-- 在公开榜单上 150 支队伍中排名第 1，最终成绩排名第 5
-
+- Applied the DARE-TIES merging strategy to efficiently integrate LLMs across multiple base models, enhancing multi-task generalization performance
+- Ranked 1st among 150 teams on the public leaderboard and 5th in the final standings
 
 #item(
   link(
     "https://datastudio.wps.cn/matchcenter/competition/1/introduction",
-    [中文文本智能校对大赛]
+    [*Chinese Text Proofreading Competition*]
   ),
-    [金山办公 2024算法挑战赛], 
-    date[ 2024 年 09 月 – 2024 年 10 月 ]
+    [Kingsoft Office 2024 Algorithm Challenge], 
+    date[ Sept. 2024 – Oct. 2024 ], firstcolumnwidth: 40%
 )
 
-- 调研了前沿文本校对方法，使用基于 Qwen2.5 的模型微调和集成学习方法完成了给定的中文文本校对任务
-- 在 53 支队伍中排名第 4
+- Completed Chinese text proofreading tasks using model fine-tuning and ensemble learning methods based on the Qwen2.5 model
+-	Achieved 4th place among 53 teams
 
-// #item(
-//   [基于机器学习的电池寿命预测\ #text(0.9em,"清华大学，自动化系")],
-//   [科研项目],
-//   date[2023 年  04 月 - 2023 年 05 月]
-// )
 
-// // - 开发了一种基于 self-attention 机制的编码模型，从电池测试数据中提取全局衰减信息
-// - 针对电池物理特性开发了一种基于注意力机制的编码模型，从电池测试数据中提取全局衰减信息
-// - 利用编码特征实现了电池寿命预测，实验结果显示在预测精度上优于传统回归模型
+#item(
+  [*Battery Life Prediction Based on Machine Learning* \ #text(0.9em,"Tsinghua University, Department of Automation")],
+  [Research Project],
+  date[May 2022 – Sept. 2022], firstcolumnwidth: 45%
+)
 
-// #item(
-//   [基于机器学习的社交网络意见动力学的控制\ #text(0.9em,"清华大学，自动化系")],
-//   [科研项目],
-//   date[2022 年 05 月 - 2022 年 09 月]
-// )
-// - 开发了一种结合图神经网络和深度强化学习的方法，用于估计和控制社交网络中的意见动态
-// - 开发并在仿真环境中测试了该方法，仿真实验结果显示其性能显著优于传统算法
+- Developed an encoder model based on self-attention mechanisms to extract global degradation information from battery testing data
+- Used encoded features to predict battery life, achieving higher accuracy than traditional regression models
+
+#item(
+  [*Control of Opinion Dynamics in Social Networks Based on Machine Learning*\ #text(0.9em,"Tsinghua University, Department of Automation")],
+  [Research Project],
+  date[May 2022 – Sept. 2022], firstcolumnwidth: 45%
+)
+- Proposed a method combining graph neural networks and deep reinforcement learning to estimate and control opinion dynamics in social networks
+- Implemented the method in PyTorch; simulation results demonstrated significant performance improvements over traditional algorithms
 // #item(
 //   link(
 //     "https://github.com/OrangeX4/Latex-Sympy-Calculator",
@@ -281,9 +214,21 @@
 //   date[ 2021 年 09 月 – 2022 年 09 月 ]
 // )
 
-== #faWrench 专业技能
+== #faWork INTERNSHIP
 
-#sidebar(withLine: false, sideWidth: 15%)[
+// 在这里添加你的实习经历
+#item(
+  [ *Meituan* NLP Center \ #text(0.9em ,"LLM Algorithm Strategy Intern")], //北京三快网络科技有限公司
+  [ ],
+  date[ Beijing \ Sept. 2023 – Dec. 2023 ]
+)
+	-	Conducted long-tail knowledge distribution analysis on Chinese pre-training datasets using semantic analysis and clustering algorithms
+	-	Designed alignment processes for models and data based on knowledge redistribution, improving the performance of pre-trained Llama 2 on knowledge assessment tasks like MMLU
+
+
+== #faWrench PROGRAMMING SKILLS
+
+#sidebar(withLine: false, sideWidth: 30%)[
   // *操作系统*
   
   // *掌握*
@@ -292,11 +237,11 @@
 
   // *了解*
 
-  *编程语言*
+  *Programming Languages*
 
-  *机器学习框架*
+  *Machine Learning Frameworks*
 
-  *其他技能*
+  *Other Skills*
 ][
   // #faLinux Linux, #h(0.5em) #faWindows Windows
 
@@ -305,24 +250,24 @@
   Python, C/C++, Shell, Java, Rust, Matlab, Mathematica
   #v(0.2em)
 
-  PyTorch, HuggingFace, vLLM, SGLang, DeepSpeed, LLaMA-Factory
+  PyTorch, HuggingFace, vLLM, SGLang, TensorFlow, DeepSpeed
   #v(0.2em)
-
-  #LATEX  , Git
+  
+  LaTeX, Git
 
   // Python, C/C++; PyTorch, huggingface, vLLM, SGLang  ; LaTeX, Git 
   
   // Java, Rust, Matlab, Mathematica; TensorFlow, DeepSpeed
 
 ]
-== #faLanguage 语言能力
+== #faLanguage LANGUAGE SKILLS
 #item(
-  [*TOEFL iBT*], [101/120 (Reading 29, Listening 28, Speaking 22, Writing 22)], date[ 2023 -年 07 月], 
+  [*TOEFL iBT*], [101/120 (Reading 29, Listening 28, Speaking 22, Writing 22)], date[ July 2023], 
   firstcolumnwidth: 20%
 )
 #item(
   [*GRE*], 
   [325 (Verbal 155, Quantitative 170, Writing 3.0)], 
-  date[ 2022 年 04 月],
+  date[ April 2022],
   firstcolumnwidth: 20%
 )
